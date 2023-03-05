@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import styles from "./Landing.module.scss";
 import Head from "next/head";
+import { Button, Spacer } from "@nextui-org/react";
+import { landingData } from "./data";
+import List from "./list/List";
+
 const Landing: React.FC = (): JSX.Element => {
+	const [list, setList] =
+		useState<{ name: string; state: string }[]>(landingData);
+
 	return (
 		<div className={styles.landing_container}>
 			{" "}
@@ -12,24 +19,42 @@ const Landing: React.FC = (): JSX.Element => {
 				<link rel="icon" href="/logo.png" />
 			</Head>
 			<header className={styles.header_landing}>
-				<h2>Plan the schedule with your team using Eventier!</h2>
-				<p>Simply drag and drop your tasks, try yourself!</p>
+				<div>
+					<h2 className={styles.landing_logoText}>
+						Plan the schedule with your team using Eventier!
+					</h2>
+					<p style={{ padding: "5px", fontSize: "20px" }}>
+						Simply drag and drop your tasks, try yourself!
+					</p>
+				</div>
+				<div className={styles.regButtons_landing}>
+					<Button size="sm" color="secondary">
+						Login
+					</Button>
+					<Spacer x={0.5} />
+					<Button size="sm" color="secondary">
+						Signup
+					</Button>
+				</div>
 			</header>
 			<main className={styles.main_landing}>
 				<div className={styles.left_landing}>
 					<p className={styles.p_landing} style={{ color: "#DD485D" }}>
-						To do
+						To Do
 					</p>
+					<List list={list} currentState="todo" />
 				</div>
 				<div className={styles.center_landing}>
 					<p className={styles.p_landing} style={{ color: "#D3E039" }}>
-						In process
+						In Process
 					</p>
+					<List list={list} currentState="inProcess" />
 				</div>
 				<div className={styles.right_landing}>
 					<p className={styles.p_landing} style={{ color: "#3DCF29" }}>
 						Done
 					</p>
+					<List list={list} currentState="done" />
 				</div>
 			</main>
 		</div>

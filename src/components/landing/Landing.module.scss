@@ -21,37 +21,68 @@
 @mixin border($borderElem: 1px solid black) {
 	border: $borderElem;
 	height: 70%;
-	width: 40%;
+	width: 25%;
+	border-radius: 5px;
 }
 
 .header_landing {
-	flex: 0.2;
-	justify-content: flex-start;
+	padding: 2%;
+	flex: 0.1;
+	display: flex;
+	justify-content: space-around;
 	align-items: center;
+}
+
+.landing_logoText {
+	padding: 5px;
+	font-size: 40px;
+	border: none;
+}
+
+.regButtons_landing {
+	display: flex;
+	gap: 5px;
+}
+
+.regButtons_landing button:hover {
+	scale: 1.1;
 }
 
 .main_landing {
 	@include rowFlex;
+	@extend %dim;
 	flex: 0.8;
 }
 
 .left_landing {
-	@include border(1px solid #98b23a);
+	@include border(1px solid #dd485d);
 	text-align: center;
 }
 
 .center_landing {
-	@include border(1px solid #98b23a);
+	@include border(1px solid #d3e039);
 	text-align: center;
 }
 
 .right_landing {
-	@include border(1px solid #98b23a);
+	@include border(1px solid #3dcf29);
 	text-align: center;
 }
 
 .p_landing {
 	font-weight: bold;
-	font-size: 20px;
-    letter-spacing: 3px;
+	font-size: 25px;
+	letter-spacing: 3px;
+}
+
+:where(.left_landing, .right_landing, .center_landing):hover {
+	scale: 1.01;
+}
+
+@media only screen and (max-width: 900px) {
+	.regButtons_landing {
+		display: flex;
+		flex-flow: column;
+		gap: 5px;
+	}
 }
