@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import styles from "./Landing.module.scss";
 import Head from "next/head";
 import { Button, Spacer } from "@nextui-org/react";
 import { landingData } from "./data";
 import List from "./list/List";
+import { DndContext } from "@dnd-kit/core";
 
 const Landing: React.FC = (): JSX.Element => {
 	const [list, setList] =
@@ -27,6 +28,7 @@ const Landing: React.FC = (): JSX.Element => {
 						Simply drag and drop your tasks, try yourself!
 					</p>
 				</div>
+
 				<div className={styles.regButtons_landing}>
 					<Button size="sm" color="secondary">
 						Login
@@ -37,26 +39,30 @@ const Landing: React.FC = (): JSX.Element => {
 					</Button>
 				</div>
 			</header>
-			<main className={styles.main_landing}>
-				<div className={styles.left_landing}>
-					<p className={styles.p_landing} style={{ color: "#DD485D" }}>
-						To Do
-					</p>
-					<List list={list} currentState="todo" />
-				</div>
-				<div className={styles.center_landing}>
-					<p className={styles.p_landing} style={{ color: "#D3E039" }}>
-						In Process
-					</p>
-					<List list={list} currentState="inProcess" />
-				</div>
-				<div className={styles.right_landing}>
-					<p className={styles.p_landing} style={{ color: "#3DCF29" }}>
-						Done
-					</p>
-					<List list={list} currentState="done" />
-				</div>
-			</main>
+			<DndContext>
+				<main className={styles.main_landing}>
+					<div className={styles.left_landing}>
+						<p className={styles.p_landing} style={{ color: "#DD485D" }}>
+							To Do
+						</p>
+						<List currentState="todo" />
+					</div>
+
+					<div className={styles.center_landing}>
+						<p className={styles.p_landing} style={{ color: "#D3E039" }}>
+							In Process
+						</p>
+						<List currentState="inProcess" />
+					</div>
+
+					<div className={styles.right_landing}>
+						<p className={styles.p_landing} style={{ color: "#3DCF29" }}>
+							Done
+						</p>
+						<List currentState="done" />
+					</div>
+				</main>
+			</DndContext>
 		</div>
 	);
 };
