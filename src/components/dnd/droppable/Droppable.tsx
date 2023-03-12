@@ -8,7 +8,7 @@ type DroppableProps = {
 };
 
 const Droppable: React.FC<DroppableProps> = ({ children, currentState }) => {
-	let style: any = null;
+	let style: [string] | string = '';
 	currentState === "todo" && (style = styles.left_landing);
 	currentState === "inProcess" && (style = styles.center_landing);
 	currentState === "done" && (style = styles.right_landing);

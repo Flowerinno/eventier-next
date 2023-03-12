@@ -10,11 +10,13 @@ interface ItemPropsI {
 }
 
 const ListItem = ({ name, id, currentState }: ItemPropsI) => {
+	const input = useRef(null);
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
 		id: id,
 		data: {
 			currentState
-		}
+		},
+		disabled: name === ''
 	});
 	const style = transform
 		? {
@@ -31,7 +33,8 @@ const ListItem = ({ name, id, currentState }: ItemPropsI) => {
 			{...attributes}
 			className={styles.listItem}
 		>
-			<span>{name}</span>
+			{name && <span>{name}</span>}
+			{!name && <input type='text' ref={input} className={styles.item_input}/>}
 		</div>
 	);
 };

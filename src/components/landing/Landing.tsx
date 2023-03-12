@@ -3,35 +3,26 @@ import styles from "./Landing.module.scss";
 import Head from "next/head";
 import { Button, Spacer } from "@nextui-org/react";
 import { landingData } from "./data";
-import List from "./list/List";
 import { DndContext } from "@dnd-kit/core";
 import Droppable from "../dnd/droppable/Droppable";
-
-interface ListI {
-	name: string;
-	state: string;
-	id: number;
-};
-
+import { ListI } from "@/types/landingTypes/LandingTypes";
+import {
+	ListHandler,
+	addItemToList,
+	findLatestIdInList,
+} from "@/utils/ListUtil";
+import List from "./list/List";
 
 const Landing: React.FC = (): JSX.Element => {
 	const [list, setList] = useState<ListI[]>(landingData);
 
-	const ListHandler = (list: ListI[], idIdentifier:number, currentStateId: string): ListI[] => {
-		
-  const newList = list.map(listItem => {
-	  if (listItem.id === idIdentifier) {
-		  return {
-			  ...listItem,
-			  state: currentStateId
-			}
-		} return listItem
-  })
-		return newList
-	}
-
-	const handleDragEnd = ({active, over}: any) => {
-		setList(ListHandler(list,active.id, over.id))
+	const handleDragEnd = ({ active, over }: any) => {
+		if (over !== null) {
+			setList(ListHandler(list, active.id, over.id));
+		}
+	};
+	const addItemHandler = () => {
+		setList((prevList) => addItemToList(prevList, findLatestIdInList(prevList)));
 	};
 	return (
 		<div className={styles.landing_container}>
@@ -47,7 +38,7 @@ const Landing: React.FC = (): JSX.Element => {
 					<h2 className={styles.landing_logoText}>
 						Plan the schedule with your team using Eventier!
 					</h2>
-					<p style={{ padding: "5px", fontSize: "20px" }}>
+					<p style={{ padding: "5px", fontSize: "70%" }}>
 						Simply drag and drop your tasks, try yourself!
 					</p>
 				</div>
@@ -67,7 +58,7 @@ const Landing: React.FC = (): JSX.Element => {
 					<Droppable currentState="todo">
 						<>
 							<p className={styles.p_landing} style={{ color: "#DD485D" }}>
-								To Do
+								To Do <button onClick={addItemHandler} title='Add new todo'>+</button>
 							</p>
 							<List currentState="todo" list={list} />
 						</>
