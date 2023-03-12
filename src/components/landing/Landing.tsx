@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Landing.module.scss";
+import Link from "next/link";
 import Head from "next/head";
 import { Button, Spacer } from "@nextui-org/react";
 import { landingData } from "./data";
@@ -22,7 +23,9 @@ const Landing: React.FC = (): JSX.Element => {
 		}
 	};
 	const addItemHandler = () => {
-		setList((prevList) => addItemToList(prevList, findLatestIdInList(prevList)));
+		setList((prevList) =>
+			addItemToList(prevList, findLatestIdInList(prevList))
+		);
 	};
 	return (
 		<div className={styles.landing_container}>
@@ -38,19 +41,15 @@ const Landing: React.FC = (): JSX.Element => {
 					<h2 className={styles.landing_logoText}>
 						Plan the schedule with your team using Eventier!
 					</h2>
-					<p style={{ padding: "5px", fontSize: "70%" }}>
+					<p style={{ padding: "5px", fontSize: "90%" }}>
 						Simply drag and drop your tasks, try yourself!
 					</p>
 				</div>
 
 				<div className={styles.regButtons_landing}>
-					<Button size="sm" color="secondary">
-						Login
-					</Button>
+					<Link href="/login">Login</Link>
 					<Spacer x={0.5} />
-					<Button size="sm" color="secondary">
-						Signup
-					</Button>
+					<Link href="/signup">Signup</Link>
 				</div>
 			</header>
 			<DndContext onDragEnd={handleDragEnd}>
@@ -58,7 +57,10 @@ const Landing: React.FC = (): JSX.Element => {
 					<Droppable currentState="todo">
 						<>
 							<p className={styles.p_landing} style={{ color: "#DD485D" }}>
-								To Do <button onClick={addItemHandler} title='Add new todo'>+</button>
+								To Do{" "}
+								<button onClick={addItemHandler} title="Add new todo">
+									+
+								</button>
 							</p>
 							<List currentState="todo" list={list} />
 						</>

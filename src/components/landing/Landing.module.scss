@@ -17,7 +17,7 @@
 .landing_container {
 	@include colFlex;
 	height: 100vh;
-	background-color: rgb(91, 117, 117);
+	background-color: #ffe6e6;
 }
 @mixin border($borderElem: 1px solid black) {
 	border: $borderElem;
@@ -37,12 +37,26 @@
 .landing_logoText {
 	padding: 5px;
 	font-size: 130%;
+	font-weight: bold;
 	border: none;
 }
 
 .regButtons_landing {
 	display: flex;
 	gap: 5px;
+	a {
+		text-align: center;
+		border: 1px solid plum;
+		width: 100px;
+		border-radius: 10px;
+		color: black;
+	}
+}
+
+.regButtons_landing > a:hover {
+	color: rgb(71, 199, 71);
+	scale: 1.05;
+	border: 1px rgb(71, 199, 71) solid;
 }
 
 .regButtons_landing button:hover {
@@ -79,17 +93,15 @@
 	align-items: center;
 	justify-content: center;
 	gap: 5px;
-	button {		
+	button {
 		background-color: inherit;
 		outline: none;
 		border: none;
 		font-size: 150%;
-		
 	}
-	
 }
 
-.p_landing>button:hover {
+.p_landing > button:hover {
 	cursor: pointer;
 	scale: 1.1;
 }
