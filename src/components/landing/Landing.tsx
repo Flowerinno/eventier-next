@@ -1,15 +1,38 @@
-import React, { useState, memo } from "react";
+import React, { useState } from "react";
 import styles from "./Landing.module.scss";
 import Head from "next/head";
 import { Button, Spacer } from "@nextui-org/react";
 import { landingData } from "./data";
 import List from "./list/List";
 import { DndContext } from "@dnd-kit/core";
+import Droppable from "../dnd/droppable/Droppable";
+
+interface ListI {
+	name: string;
+	state: string;
+	id: number;
+};
+
 
 const Landing: React.FC = (): JSX.Element => {
-	const [list, setList] =
-		useState<{ name: string; state: string }[]>(landingData);
+	const [list, setList] = useState<ListI[]>(landingData);
 
+	const ListHandler = (list: ListI[], idIdentifier:number, currentStateId: string): ListI[] => {
+		
+  const newList = list.map(listItem => {
+	  if (listItem.id === idIdentifier) {
+		  return {
+			  ...listItem,
+			  state: currentStateId
+			}
+		} return listItem
+  })
+		return newList
+	}
+
+	const handleDragEnd = ({active, over}: any) => {
+		setList(ListHandler(list,active.id, over.id))
+	};
 	return (
 		<div className={styles.landing_container}>
 			{" "}
@@ -39,28 +62,32 @@ const Landing: React.FC = (): JSX.Element => {
 					</Button>
 				</div>
 			</header>
-			<DndContext>
+			<DndContext onDragEnd={handleDragEnd}>
 				<main className={styles.main_landing}>
-					<div className={styles.left_landing}>
-						<p className={styles.p_landing} style={{ color: "#DD485D" }}>
-							To Do
-						</p>
-						<List currentState="todo" />
-					</div>
-
-					<div className={styles.center_landing}>
-						<p className={styles.p_landing} style={{ color: "#D3E039" }}>
-							In Process
-						</p>
-						<List currentState="inProcess" />
-					</div>
-
-					<div className={styles.right_landing}>
-						<p className={styles.p_landing} style={{ color: "#3DCF29" }}>
-							Done
-						</p>
-						<List currentState="done" />
-					</div>
+					<Droppable currentState="todo">
+						<>
+							<p className={styles.p_landing} style={{ color: "#DD485D" }}>
+								To Do
+							</p>
+							<List currentState="todo" list={list} />
+						</>
+					</Droppable>
+					<Droppable currentState="inProcess">
+						<>
+							<p className={styles.p_landing} style={{ color: "#D3E039" }}>
+								In Process
+							</p>
+							<List currentState="inProcess" list={list} />
+						</>
+					</Droppable>
+					<Droppable currentState="done">
+						<>
+							<p className={styles.p_landing} style={{ color: "#3DCF29" }}>
+								Done
+							</p>
+							<List currentState="done" list={list} />
+						</>
+					</Droppable>
 				</main>
 			</DndContext>
 		</div>

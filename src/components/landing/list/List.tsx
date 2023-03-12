@@ -1,31 +1,22 @@
-import React, { useState } from "react";
-import { useDroppable } from "@dnd-kit/core";
+import React from "react";
 import styles from "./List.module.scss";
 import ListItem from "./ListItem";
-import { Droppable } from "react-beautiful-dnd";
+
 
 interface ListPropsI {
+	list: {
+		name: string;
+		state: string;
+		id: number;
+	}[],
 	currentState: string;
 }
 
-interface Item {
-	name: string;
-	state: string;
-	id: number;
-}
-
-const List = ({ currentState }: ListPropsI) => {
-	const [list, setList] = useState([
-		{ name: "Read a book", state: "todo", id: 1 },
-		{ name: "Write a letter", state: "inProcess", id: 2 },
-		{ name: "Write an essay", state: "done", id: 3 },
-	]);
-	const { isOver, setNodeRef } = useDroppable({
-		id: currentState,
-	});
+const List = ({ list, currentState }: ListPropsI) => {
+	
 
 	return (
-		<div ref={setNodeRef}>
+		<div>
 			{list
 				.filter((item) => {
 					return item.state === currentState;

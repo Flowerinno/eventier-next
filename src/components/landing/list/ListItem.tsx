@@ -12,6 +12,9 @@ interface ItemPropsI {
 const ListItem = ({ name, id, currentState }: ItemPropsI) => {
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
 		id: id,
+		data: {
+			currentState
+		}
 	});
 	const style = transform
 		? {

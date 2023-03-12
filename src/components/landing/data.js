@@ -1,5 +1,5 @@
 export const landingData = [
-	{ name: "Read a book", state: "todo" },
-	{ name: "Write a letter", state: "inProcess" },
-	{ name: "Write an essay", state: "done" },
+	{ name: "Read a book", state: "todo", id: 1 },
+	{ name: "Write a letter", state: "inProcess", id: 2 },
+	{ name: "Write an essay", state: "done", id: 3 },
 ];
