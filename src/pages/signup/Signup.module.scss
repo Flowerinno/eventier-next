@@ -6,7 +6,7 @@
 	background-color: #ffe6e6;
 	align-items: center;
 	justify-content: center;
-	gap: 10%;
+	gap: 15%;
 	.signup_logo {
 		font-size: 45px;
 		font-weight: bold;
@@ -30,14 +30,14 @@
 		align-items: center;
 		justify-content: center;
 		gap: 2%;
-		width: 20%;
+		width: 100%;
 		height: 40%;
 		input {
 			outline: none;
 			border: none;
 			padding: 10px;
 			border-radius: 10px;
-			width: 100%;
+			width: 30%;
 		}
 	}
 	.signup_buttons {
@@ -78,4 +78,15 @@
 }
 .signup_buttons button:hover {
 	@include greenHover;
+}
+
+
+@media only screen and (max-width: 500px) {
+	.signup_container {
+		form {
+			input {
+				width: 70%;
+			}
+		}
+	}
 }

@@ -13,8 +13,6 @@ interface ListPropsI {
 }
 
 const List = ({ list, currentState }: ListPropsI) => {
-	
-
 	return (
 		<div>
 			{list

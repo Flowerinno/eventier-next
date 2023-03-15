@@ -1,12 +1,11 @@
 .listItem {
 	display: flex;
-	flex-basis: stretch;
 	flex-flow: column;
-	align-items: stretch;
 	justify-content: center;
-	width: 100%;
-	border-radius: 14px;
+	align-items: flex-start;
+	border-radius: 15px;
 	background-color: #000;
+	
 }
 
 .listItem:hover {
