@@ -1,150 +1,164 @@
 %dim {
-	width: 100%;
-	height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
 
 @mixin rowFlex() {
-	display: flex;
-	flex-flow: row;
-	justify-content: space-evenly;
-	align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 @mixin colFlex() {
-	display: flex;
-	flex-flow: column;
+  display: flex;
+  flex-flow: column;
 }
 
 .landing_container {
-	@include colFlex;
-	height: 100vh;
-	background-color: #ffe6e6;
+  @include colFlex;
+  height: 100vh;
+  background-color: #ffe6e6;
 }
 @mixin border($borderElem: 1px solid black) {
-	border: $borderElem;
-	height: 70%;
-	width: 25%;
-	border-radius: 5px;
+  border: $borderElem;
+  height: 70%;
+  width: 25%;
+  border-radius: 5px;
 }
 
 .header_landing {
-	padding: 2%;
-	flex: 0.1;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  padding: 2%;
+  flex: 0.1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .landing_logoText {
-	padding: 5px;
-	font-size: 130%;
-	font-weight: bold;
-	border: none;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 5px;
+  font-size: 130%;
+  font-weight: bold;
+  border: none;
+  h2 {
+    display: flex;
+    width: 40%;
+    margin: 0;
+    h1 {
+      width: 20%;
+      margin: 0;
+    }
+  }
 }
 
 .regButtons_landing {
-	display: flex;
-	gap: 5px;
-	a {
-		text-align: center;
-		border: 1px solid plum;
-		width: 100px;
-		border-radius: 10px;
-		color: black;
-	}
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  a {
+    text-align: center;
+    border: 1px solid plum;
+    width: 100px;
+    border-radius: 10px;
+    color: black;
+  }
 }
 
 .regButtons_landing > a:hover {
-	color: rgb(71, 199, 71);
-	scale: 1.05;
-	border: 1px rgb(71, 199, 71) solid;
+  color: rgb(71, 199, 71);
+  scale: 1.05;
+  border: 1px rgb(71, 199, 71) solid;
 }
 
 .regButtons_landing button:hover {
-	scale: 1.1;
+  scale: 1.1;
 }
 
 .main_landing {
-	@include rowFlex;
-	@extend %dim;
-	flex: 1;
+  @include rowFlex;
+  @extend %dim;
+  flex: 1;
 }
 
 .left_landing {
-	@include border(1px solid #dd485d);
-	text-align: center;
+  @include border(1px solid #dd485d);
+  text-align: center;
 }
 
 .center_landing {
-	@include border(1px solid #d3e039);
-	text-align: center;
+  @include border(1px solid #d3e039);
+  text-align: center;
 }
 
 .right_landing {
-	@include border(1px solid #3dcf29);
-	text-align: center;
+  @include border(1px solid #3dcf29);
+  text-align: center;
 }
 
 .p_landing {
-	font-weight: bold;
-	font-size: 100%;
-	letter-spacing: 3px;
-	display: flex;
-	flex-flow: row;
-	align-items: center;
-	justify-content: center;
-	gap: 5px;
-	button {
-		background-color: inherit;
-		outline: none;
-		border: none;
-		font-size: 150%;
-	}
+  font-weight: bold;
+  font-size: 100%;
+  letter-spacing: 3px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  button {
+    background-color: inherit;
+    outline: none;
+    border: none;
+    font-size: 150%;
+  }
 }
 
 .p_landing > button:hover {
-	cursor: pointer;
-	scale: 1.1;
+  cursor: pointer;
+  scale: 1.1;
 }
 
 :where(.left_landing, .right_landing, .center_landing):hover {
-	scale: 1.01;
+  scale: 1.01;
 }
 
 @media only screen and (max-width: 900px) {
-	.regButtons_landing {
-		display: flex;
-		flex-flow: column;
-		gap: 5px;
-	}
-	.main_landing {
-		@include colFlex;
-		overflow: hidden;
-		flex: 1;
-		justify-content: space-evenly;
-	}
-	.left_landing {
-		@include colFlex;
-		align-self: flex-start;
-		margin-left: 5%;
-		p {
-			font-size: 70%;
-		}
-	}
-	.center_landing {
-		@include colFlex;
-		align-self: center;
-		p {
-			font-size: 70%;
-		}
-	}
-	.right_landing {
-		@include colFlex;
-		align-self: flex-end;
-		margin-bottom: 5%;
-		margin-right: 5%;
-		p {
-			font-size: 70%;
-		}
-	}
+  .regButtons_landing {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+  }
+  .main_landing {
+    @include colFlex;
+    overflow: hidden;
+    flex: 1;
+    justify-content: space-evenly;
+  }
+  .left_landing {
+    @include colFlex;
+    align-self: flex-start;
+    margin-left: 5%;
+    p {
+      font-size: 70%;
+    }
+  }
+  .center_landing {
+    @include colFlex;
+    align-self: center;
+    p {
+      font-size: 70%;
+    }
+  }
+  .right_landing {
+    @include colFlex;
+    align-self: flex-end;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    p {
+      font-size: 70%;
+    }
+  }
 }
-
