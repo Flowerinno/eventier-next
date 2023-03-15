@@ -10,6 +10,17 @@ export const landingUsers = [
 	{firstName: 'Aleksandr', lastName: 'Kononov', 
 	avatar:'https://i.pravatar.cc/150?u=a042581f4e29026704d',
 	id: Math.random(),
-	
-	}
+	},
+	{firstName: 'Aleksandr', lastName: 'Kononov', 
+	avatar:'https://i.pravatar.cc/150?u=a042581f4e29026704d',
+	id: Math.random(),
+	},
+	{firstName: 'Aleksandr', lastName: 'Kononov', 
+	avatar:'https://i.pravatar.cc/150?u=a042581f4e29026704d',
+	id: Math.random(),
+	},
+	{firstName: 'Aleksandr', lastName: 'Kononov', 
+	avatar:'https://i.pravatar.cc/150?u=a042581f4e29026704d',
+	id: Math.random(),
+	},
 ]
