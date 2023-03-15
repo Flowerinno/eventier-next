@@ -5,28 +5,12 @@
 	align-items: stretch;
 	justify-content: center;
 	width: 100%;
-	border-radius: 15px;
-	.listItem_title {
-		display: flex;
-		flex-wrap: wrap;
-		font-size: 80%;
-		font-weight: bold;
-		justify-content: center;
-		align-items: center;
-		letter-spacing: 1.5px;
-	}
-	input {
-		outline: none;
-		border: none;
-		background-color: inherit;
-		width: 100%;
-		font-size: 80%;
-		text-align: center;
-	}
+	border-radius: 14px;
+	background-color: #000;
 }
 
 .listItem:hover {
 	cursor: pointer;
-	background-color: #fff;
+	background-color: #005;
 	animation: none;
 }

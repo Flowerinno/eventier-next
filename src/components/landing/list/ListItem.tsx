@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "./ListItem.module.scss";
 import { useDraggable } from "@dnd-kit/core";
-import { Dropdown } from "@nextui-org/react";
+import { Dropdown, Avatar, Text, Grid, User } from "@nextui-org/react";
 
 interface ItemPropsI {
 	name: string;
@@ -29,7 +29,7 @@ const ListItem = ({ name, id, currentState }: ItemPropsI) => {
 				transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
 		  }
 		: undefined;
-
+		
 	return (
 		<div
 			className={styles.listItem}
@@ -37,12 +37,15 @@ const ListItem = ({ name, id, currentState }: ItemPropsI) => {
 			style={style}
 			{...listeners}
 			{...attributes}
+			title='drag and drop'
 		>
-			<Dropdown disableTriggerPressedAnimation trigger="longPress">
-				<Dropdown.Button flat size="lg" color={currentColor}>
+			<Dropdown disableTriggerPressedAnimation>
+				<Dropdown.Button flat color={currentColor} 
+				css={{width: '90%', d: 'flex'}}>
 					{name}
 				</Dropdown.Button>
-				<Dropdown.Menu>
+				<Dropdown.Menu aria-label="Dynamic Actions"
+				containerCss={{width:'50px'}}>
 					<Dropdown.Item key={Math.random()}>User</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>
