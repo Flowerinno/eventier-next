@@ -12,6 +12,7 @@
     "@dnd-kit/core": "^6.0.8",
     "@dnd-kit/modifiers": "^6.0.1",
     "@dnd-kit/sortable": "^7.0.2",
+    "@hookform/resolvers": "^2.9.11",
     "@nextui-org/react": "^1.0.0-beta.12",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
@@ -22,7 +23,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.5",
     "sass": "^1.58.3",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@types/react-beautiful-dnd": "^13.1.3"

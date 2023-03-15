@@ -18,6 +18,7 @@ const Landing: React.FC = (): JSX.Element => {
 	const [list, setList] = useState<ListI[]>(landingData);
 
 	const handleDragEnd = ({ active, over }: any) => {
+		console.log(active, over);
 		if (over !== null) {
 			setList(ListHandler(list, active.id, over.id));
 		}

@@ -1,4 +1,4 @@
-.login_container {
+.signup_container {
 	display: flex;
 	flex-flow: column;
 	width: 100vw;
@@ -7,19 +7,20 @@
 	align-items: center;
 	justify-content: center;
 	gap: 10%;
-	.login_logo {
+	.signup_logo {
 		font-size: 45px;
 		font-weight: bold;
 		text-align: center;
 		h4 {
+			margin: 0;
+			padding: 0;
 			color: black;
 		}
 	}
-	.login_wrapper {
+	.signup_wrapper {
 		display: flex;
 		flex-flow: column;
 		align-items: center;
-		// justify-content: center;
 		flex: 0.9;
 		width: 100%;
 	}
@@ -28,7 +29,7 @@
 		flex-flow: column;
 		align-items: center;
 		justify-content: center;
-		gap: 5%;
+		gap: 2%;
 		width: 20%;
 		height: 40%;
 		input {
@@ -39,7 +40,7 @@
 			width: 100%;
 		}
 	}
-	.login_buttons {
+	.signup_buttons {
 		display: flex;
 		flex-flow: row;
 		justify-content: center;
@@ -72,9 +73,9 @@
 	border: 1px rgb(71, 199, 71) solid;
 }
 
-.login_buttons a:hover {
+.signup_buttons a:hover {
 	@include greenHover;
 }
-.login_buttons button:hover {
+.signup_buttons button:hover {
 	@include greenHover;
 }

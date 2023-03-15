@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "./login.schema";
 import Link from "next/link";
-interface loginFormTypes {
-	firstName: string;
-	lastName: string;
-	email: string;
-	password: string;
-}
+import { LoginFormTypes } from "./loginTypes";
 
 const Login: React.FC = (): JSX.Element => {
 	const {
@@ -15,52 +12,45 @@ const Login: React.FC = (): JSX.Element => {
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<loginFormTypes>();
+	} = useForm<LoginFormTypes>({
+		resolver: yupResolver(loginSchema),
+	});
 	const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+
 	const loginHandler = ({
 		firstName,
 		lastName,
 		email,
 		password,
-	}: loginFormTypes) => {
-		console.log(firstName, lastName, email, password);
-	};
+	}: LoginFormTypes) => {};
 
 	return (
 		<div className={styles.login_container}>
 			<Link href="/" className={styles.login_logo}>
-				Eventier
+				Eventier <h4>Login</h4>
 			</Link>
 
 			<div className={styles.login_wrapper}>
 				<form action="submit" onSubmit={handleSubmit(loginHandler)}>
-					<input
-						type="text"
-						{...register("firstName", { required: true })}
-						placeholder="First name"
-					/>
-					<input
-						type="text"
-						{...register("lastName", { required: true })}
-						placeholder="Last Name"
-					/>
+					<p>{!errors.email?.message ? null : errors.email?.message}</p>
 					<input
 						type="text"
 						{...register("email", { required: true })}
-						placeholder="Email"
+						placeholder="Email*"
 					/>
+					<p>{!errors.password?.message ? null : errors.password?.message}</p>
 					<input
 						type={passwordIsVisible ? "text" : "password"}
 						{...register("password", { required: true })}
-						placeholder="Password"
+						placeholder="Password*"
 					/>
+					<div className={styles.login_buttons}>
+						<button type="submit">Login</button>
+						<span>
+							Already a member? <Link href="/signup">Sign up</Link>
+						</span>
+					</div>
 				</form>
-				<div className={styles.login_buttons}>
-					<Link href="/">Login</Link>
-					<span>
-						Already a member? <Link href="/">Sign up</Link>
-					</span>
-				</div>
 			</div>
 		</div>
 	);
