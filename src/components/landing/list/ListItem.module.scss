@@ -1,27 +1,32 @@
 .listItem {
-	display: flex;
-	flex-flow: column;
-	justify-content: center;
-	align-items: flex-start;
-	border-radius: 15px;
-	background-color: #000;
-	width: 100%;
-	.listItem_dropdown_button {
-		font-size: 15px;
-	}
+  display: inline;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  gap: 5px;
+  width: 100%;
+  .listItem_button {
+    font-size: 10px;
+    width: 80%;
+    text-overflow: ellipsis;
+    color: black;
+  }
 }
 
 .listItem:hover {
-	cursor: pointer;
-	background-color: #005;
-	animation: none;
+  cursor: pointer;
+  background-color: inherit;
+  animation: none;
 }
 
 @media only screen and (max-width: 700px) {
-	.listItem {
-	.listItem_dropdown_button {
-		font-size: 7px;
-		width: 10%;
-	}
-}
+  .listItem {
+    width: 100%;
+    .listItem_dropdown_button {
+      font-size: 5px;
+      width: 1%;
+    }
+  }
 }

@@ -11,19 +11,22 @@ import {
   ListHandler,
   addItemToList,
   findLatestIdInList,
+  disableItemInList
 } from "@/utils/ListUtil";
 import List from "./list/List";
 
 const Landing: React.FC = (): JSX.Element => {
-  
   const [list, setList] = useState<ListI[]>(landingData);
 
   const handleDragEnd = ({ active, over }: any) => {
-    console.log(active, over);
     if (over !== null) {
       setList(ListHandler(list, active.id, over.id));
     }
   };
+  
+  const disableHandler = (id) => {
+    setList(disableItemInList(list, id));
+  }
 
   return (
     <div className={styles.landing_container}>
@@ -35,10 +38,10 @@ const Landing: React.FC = (): JSX.Element => {
         <link rel="icon" href="/logo.png" />
       </Head>
       <header className={styles.header_landing}>
-        <div style={{width: "70%"}}>
+        <div style={{ width: "70%" }}>
           <h2 className={styles.landing_logoText}>
             Plan the schedule with your team using EVENTIER!
-          </h2> 
+          </h2>
           <p style={{ padding: "5px", fontSize: "90%" }}>
             Simply drag and drop your tasks, try yourself!
           </p>
@@ -57,7 +60,7 @@ const Landing: React.FC = (): JSX.Element => {
               <p className={styles.p_landing} style={{ color: "#DD485D" }}>
                 To Do{" "}
               </p>
-              <List currentState="todo" list={list} />
+              <List currentState="todo" list={list} disableHandler={disableHandler}/>
             </>
           </Droppable>
           <Droppable currentState="inProcess">
@@ -65,7 +68,7 @@ const Landing: React.FC = (): JSX.Element => {
               <p className={styles.p_landing} style={{ color: "#D3E039" }}>
                 In Process
               </p>
-              <List currentState="inProcess" list={list} />
+              <List currentState="inProcess" list={list} disableHandler={disableHandler}/>
             </>
           </Droppable>
           <Droppable currentState="done">
@@ -73,7 +76,7 @@ const Landing: React.FC = (): JSX.Element => {
               <p className={styles.p_landing} style={{ color: "#3DCF29" }}>
                 Done
               </p>
-              <List currentState="done" list={list} />
+              <List currentState="done" list={list} disableHandler={disableHandler}/>
             </>
           </Droppable>
         </main>

@@ -132,15 +132,13 @@
     gap: 5px;
   }
   .main_landing {
-    @include colFlex;
+    @include rowFlex;
     overflow: hidden;
     flex: 1;
     justify-content: space-evenly;
   }
   .left_landing {
     @include colFlex;
-    align-self: flex-start;
-    margin-left: 5%;
     p {
       font-size: 70%;
     }
@@ -154,9 +152,6 @@
   }
   .right_landing {
     @include colFlex;
-    align-self: flex-end;
-    margin-bottom: 5%;
-    margin-right: 5%;
     p {
       font-size: 70%;
     }

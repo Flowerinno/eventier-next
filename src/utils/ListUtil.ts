@@ -26,3 +26,15 @@ export const findLatestIdInList = (list: ListI[]) : number => {
     return (list[list.length - 1]).id;
 }
 
+export const disableItemInList = (list: ListI[], id: number) : ListI[] => {
+	const newList = list.map((listItem) => {
+		if (listItem.id === id) {
+			return {
+				...listItem,
+				disabled: !listItem.disabled,
+			};
+		}
+		return listItem;
+	});
+	return newList;
+}

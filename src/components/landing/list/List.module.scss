@@ -1,5 +1,12 @@
-.listItem {
+.list {
 	list-style: none;
 	border: none;
 	outline: none;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: center;
+	span:hover {
+		cursor: pointer;
+	}
 }
