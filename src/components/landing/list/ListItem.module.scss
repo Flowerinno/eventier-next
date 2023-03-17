@@ -1,32 +1,40 @@
 .listItem {
-  display: inline;
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  gap: 5px;
-  width: 100%;
-  .listItem_button {
-    font-size: 10px;
-    width: 80%;
-    text-overflow: ellipsis;
-    color: black;
-  }
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 15px;
+	width: 100%;
 }
-
+.listItem_button {
+	font-size: 10px;
+	width: 90%;
+	text-overflow: ellipsis;
+	color: black;
+}
 .listItem:hover {
-  cursor: pointer;
-  background-color: inherit;
-  animation: none;
+	cursor: pointer;
+	background-color: inherit;
+	animation: none;
 }
 
-@media only screen and (max-width: 700px) {
-  .listItem {
-    width: 100%;
-    .listItem_dropdown_button {
-      font-size: 5px;
-      width: 1%;
-    }
-  }
+@media only screen and (max-width: 850px) {
+	.listItem_button {
+		font-size: 8px;
+		width: 40%;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.listItem_button {
+		font-size: 8px;
+		width: 40%;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+
+	.listItem_button {
+		font-size: 3px;
+		width: 10%;
+	}
 }
