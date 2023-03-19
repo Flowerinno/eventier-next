@@ -2,18 +2,18 @@
 import React, { useRef, useState } from "react";
 import styles from "./ListItem.module.scss";
 import { useDraggable } from "@dnd-kit/core";
-import { Text, Popover, Button, Tooltip } from "@nextui-org/react";
+import { Popover, Button } from "@nextui-org/react";
+import { ItemPropsI, DropdownVariants } from "./ListTypes";
 import { useDimensions } from "../../../hooks/useDimensions";
+import { LandingUsers } from "../users/LandingUsers";
 
-interface ItemPropsI {
-	name: string;
-	id: number;
-	currentState: string;
-	disabled: boolean;
-}
-type DropdownVariants = "error" | "warning" | "success";
-
-const ListItem = ({ name, id, currentState, disabled }: ItemPropsI) => {
+const ListItem = ({
+	name,
+	id,
+	currentState,
+	disabled,
+	activeMembers,
+}: ItemPropsI) => {
 	const { width, height } = useDimensions();
 	let currentColor: DropdownVariants = "success";
 	currentState === "todo" && (currentColor = "error");
@@ -57,9 +57,8 @@ const ListItem = ({ name, id, currentState, disabled }: ItemPropsI) => {
 						{name}
 					</Button>
 				</Popover.Trigger>
-				<Popover.Content>
-					{" "}
-					<Text css={{ p: "$10" }}>This is the content of the popover.</Text>
+				<Popover.Content css={{ overflow: "hidden" }}>
+					<LandingUsers activeMembers={activeMembers} />
 				</Popover.Content>
 			</Popover>
 		</div>

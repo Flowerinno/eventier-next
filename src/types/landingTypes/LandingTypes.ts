@@ -3,4 +3,6 @@ export interface ListI {
 	state: string;
 	id: number;
 	disabled: boolean;
-};
+	currentState?: string;
+	activeMembers: number[] | [];
+}

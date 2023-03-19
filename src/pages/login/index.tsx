@@ -5,53 +5,60 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./login.schema";
 import Link from "next/link";
 import { LoginFormTypes } from "./loginTypes";
-
+import { Tooltip } from "@nextui-org/react";
 const Login: React.FC = (): JSX.Element => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<LoginFormTypes>({
-    resolver: yupResolver(loginSchema),
-  });
-  const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm<LoginFormTypes>({
+		resolver: yupResolver(loginSchema),
+	});
+	const [passwordIsVisible, setPasswordIsVisible] = useState(false);
 
-  const loginHandler = ({
-    firstName,
-    lastName,
-    email,
-    password,
-  }: LoginFormTypes) => {};
+	const loginHandler = ({
+		firstName,
+		lastName,
+		email,
+		password,
+	}: LoginFormTypes) => {};
 
-  return (
-    <div className={styles.login_container}>
-      <Link href="/" className={styles.login_logo}>
-        Eventier <h4>Login</h4>
-      </Link>
+	return (
+		<div className={styles.login_container}>
+			<Link href="/" className={styles.login_logo}>
+				Eventier <h4>Login</h4>
+			</Link>
 
-      <div className={styles.login_wrapper}>
-        <form action="submit" onSubmit={handleSubmit(loginHandler)}>
-          <p>{!errors.email?.message ? null : errors.email?.message}</p>
-          <input
-            type="text"
-            {...register("email", { required: true })}
-            placeholder="Email*"
-          />
-          <p>{!errors.password?.message ? null : errors.password?.message}</p>
-          <input
-            type={passwordIsVisible ? "text" : "password"}
-            {...register("password", { required: true })}
-            placeholder="Password*"
-          />
-          <div className={styles.login_buttons}>
-            <button type="submit">Login</button>
-            <Link href="/signup">Sign up</Link>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+			<div className={styles.login_wrapper}>
+				<form action="submit" onSubmit={handleSubmit(loginHandler)}>
+					<p>{!errors.email?.message ? null : errors.email?.message}</p>
+					<input
+						type="text"
+						{...register("email", { required: true })}
+						placeholder="Email*"
+					/>
+					<p>{!errors.password?.message ? null : errors.password?.message}</p>
+					<input
+						type={passwordIsVisible ? "text" : "password"}
+						{...register("password", { required: true })}
+						placeholder="Password*"
+					/>
+					<div className={styles.login_buttons}>
+						<Tooltip
+							content={"Development in process"}
+							css={{ width: "inherit" }}
+						>
+							<Link href="/">Login</Link>
+						</Tooltip>
+						<Tooltip content={"Development in process"}>
+							<Link href="/signup">Sign up</Link>
+						</Tooltip>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
 };
 
 export default Login;

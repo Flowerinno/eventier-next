@@ -8,6 +8,7 @@ import { landingData } from "./data";
 import { DndContext } from "@dnd-kit/core";
 import Droppable from "../dnd/droppable/Droppable";
 import { ListI } from "@/types/landingTypes/LandingTypes";
+import { ListPropsI } from "./list/ListTypes";
 import {
 	ListHandler,
 	addItemToList,

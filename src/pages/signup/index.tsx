@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { LoginFormTypes } from "../login/loginTypes";
 import { signupSchema } from "./signup.schema";
-
+import { Tooltip } from "@nextui-org/react";
 const Login: React.FC = (): JSX.Element => {
 	const {
 		register,
@@ -52,8 +52,12 @@ const Login: React.FC = (): JSX.Element => {
 						placeholder="Password *"
 					/>
 					<div className={styles.signup_buttons}>
-						<Link href="/login">Login</Link>
-						<button type="submit">Signup</button>
+						<Tooltip content={"Development in process"}>
+							<Link href="/login">Login</Link>
+						</Tooltip>
+						<Tooltip content={"Development in process"}>
+							<Link href="/">Sign up</Link>
+						</Tooltip>
 					</div>
 				</form>
 			</div>

@@ -4,39 +4,31 @@ import styles from "./List.module.scss";
 import { IconContext } from "react-icons";
 import { AiFillLock, AiFillUnlock } from "react-icons/ai";
 import { Tooltip } from "@nextui-org/react";
+import { ListPropsI } from "./ListTypes";
 import ListItem from "./ListItem";
 
-interface ListPropsI {
-	list: {
-		name: string;
-		state: string;
-		id: number;
-		disabled: boolean;
-	}[];
-	currentState: string;
-	disableHandler: (id: number) => void;
-}
 
 const List = ({ list, currentState, disableHandler }: ListPropsI) => {
-	const [isDisabled, setIsDisabled] = useState(false);
 	return (
 		<div className={styles.list_container}>
-			<ul  className={styles.list_wrapper}>
-			{list
-				.filter((item) => {
-					return item.state === currentState;
-				})
-				.map((item, index) => {
-					return (
-						
+			<ul className={styles.list_wrapper}>
+				{list
+					.filter((item) => {
+						return item.state === currentState;
+					})
+					.map((item, index) => {
+						return (
 							<li className={styles.list_item} key={index}>
 								<ListItem
 									name={item.name}
 									id={item.id}
 									currentState={currentState}
 									disabled={item.disabled}
+									activeMembers={item.activeMembers}
 								/>
-								<Tooltip content={!item.disabled ? "Lock to move" : "Unlock to open"}>
+								<Tooltip
+									content={!item.disabled ? "Lock to move" : "Unlock to open"}
+								>
 									<span onClick={() => disableHandler(item.id)}>
 										<IconContext.Provider
 											value={{
@@ -53,9 +45,8 @@ const List = ({ list, currentState, disableHandler }: ListPropsI) => {
 									</span>
 								</Tooltip>
 							</li>
-						
-					);
-				})}
+						);
+					})}
 			</ul>
 		</div>
 	);
