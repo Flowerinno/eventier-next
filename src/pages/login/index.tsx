@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "./login.schema";
 import Link from "next/link";
 import { Tooltip } from "@nextui-org/react";
+
+import * as yup from "yup";
+export const loginSchema = yup.object({
+	email: yup.string().email().required(),
+	password: yup.string().required(),
+});
+
 
 export interface LoginFormTypes {
 	firstName: string;
