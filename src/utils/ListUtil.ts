@@ -17,16 +17,19 @@ export const ListHandler = (
 	return newList;
 };
 
-export const addItemToList = (list: ListI[], id:number): ListI[] => {
-    return [...list, {name: '', state: 'todo', id: id + 1}]
-}
+export const addItemToList = (list: ListI[], id: number): ListI[] => {
+	return [
+		...list,
+		{ name: "", state: "todo", id: id + 1, disabled: false, activeMembers: [] },
+	];
+};
 
-export const findLatestIdInList = (list: ListI[]) : number => {
-    if (list.length === 0) return 0;
-    return (list[list.length - 1]).id;
-}
+export const findLatestIdInList = (list: ListI[]): number => {
+	if (list.length === 0) return 0;
+	return list[list.length - 1].id;
+};
 
-export const disableItemInList = (list: ListI[], id: number) : ListI[] => {
+export const disableItemInList = (list: ListI[], id: number): ListI[] => {
 	const newList = list.map((listItem) => {
 		if (listItem.id === id) {
 			return {
@@ -37,4 +40,4 @@ export const disableItemInList = (list: ListI[], id: number) : ListI[] => {
 		return listItem;
 	});
 	return newList;
-}
+};

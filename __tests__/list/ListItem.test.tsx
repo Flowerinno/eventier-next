@@ -8,6 +8,7 @@ describe("ListItem component", () => {
 		id: 1,
 		currentState: "todo",
 		disabled: false,
+		activeMembers: [],
 	};
 
 	it("should render the name of the item passed as prop", () => {
