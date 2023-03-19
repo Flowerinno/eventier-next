@@ -3,10 +3,17 @@ import styles from "./Signup.module.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
-import { LoginFormTypes } from "../login/loginTypes";
 import { signupSchema } from "./signup.schema";
 import { Tooltip } from "@nextui-org/react";
-const Login: React.FC = (): JSX.Element => {
+
+export interface LoginFormTypes {
+	firstName: string;
+	lastName: string;
+	email: string;
+	password: string;
+}
+
+const Signup: React.FC = (): JSX.Element => {
 	const {
 		register,
 		handleSubmit,
@@ -65,4 +72,4 @@ const Login: React.FC = (): JSX.Element => {
 	);
 };
 
-export default Login;
+export default Signup;

@@ -4,8 +4,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./login.schema";
 import Link from "next/link";
-import { LoginFormTypes } from "./loginTypes";
 import { Tooltip } from "@nextui-org/react";
+
+export interface LoginFormTypes {
+	firstName: string;
+	lastName: string;
+	email: string;
+	password: string;
+}
+
 const Login: React.FC = (): JSX.Element => {
 	const {
 		register,
